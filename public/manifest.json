@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "解析快手分享的链接",
+  "name": "解析快手分享的链接",
   "icons": [
     {
       "src": "favicon.ico",
