@@ -63,18 +63,24 @@ class HorizontalLoginForm extends React.Component {
         }))
         .then(res=>{
             let resData = res.data;
-            if(resData.state_code === 0){
-              message.error(res.data.message);
-            }else if(resData.state_code === 1){
-              this.setState(
-                { 
-                  videoLink: resData.data.url 
-                },() =>{
-                  this.showVideoHtml();
-                });
-              
-              message.success(resData.message);
+            console.log(typeof resData,"typeof");
+            if((typeof resData) == "string"){
+              message.error("可能不是快手分享链接，解析失败咯");
+            }else{
+              if(resData.state_code === 0){
+                message.error(res.data.message);
+              }else if(resData.state_code === 1){
+                this.setState(
+                  { 
+                    videoLink: resData.data.url 
+                  },() =>{
+                    this.showVideoHtml();
+                  });
+                
+                message.success(resData.message);
+              }
             }
+            
             this.props.form.setFieldsValue({
               username: "",
             });
